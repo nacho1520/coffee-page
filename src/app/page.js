@@ -48,11 +48,11 @@ const Home = () => {
   };
 
   return (
-    <main className="w-full relative p-[160px] flex flex-col items-center">
+    <main className="w-full relative pt-[160px] flex flex-col items-center">
       <img src={ bgImage.src } 
-        style={{ width: "100%", height: "300px", position: "absolute", left: 0, top: 0, zIndex: -10 }} 
+        style={{ width: "100%", height: "300px", position: "absolute", left: 0, top: 0, zIndex: -10, objectFit: "cover" }} 
       />
-      <div className="bg-list-bg px-[40px] py-[80px] rounded-xl relative flex flex-col items-center lg:px-[80px] xl:px-[124px]">
+      <div className="w-[90%] bg-list-bg px-[40px] py-[80px] rounded-xl relative flex flex-col items-center lg:px-[80px] xl:px-[124px] 2xl:w-[60%]">
         <div className="flex flex-col items-center w-[480px] mb-[20px]">
           <p className="text-[#FEF7EE] text-[2rem] font-bold mb-[8px] z-10">
             Our Collection
