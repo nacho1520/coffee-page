@@ -50,7 +50,7 @@ const Home = () => {
       <img src={ bgImage.src } 
         style={{ width: "100%", height: "300px", position: "absolute", left: 0, top: 0, zIndex: -10 }} 
       />
-      <div className="bg-list-bg px-[124px] py-[80px] rounded-xl relative flex flex-col items-center">
+      <div className="bg-list-bg px-[40px] py-[80px] rounded-xl relative flex flex-col items-center lg:px-[80px] xl:px-[124px]">
         <div className="flex flex-col items-center w-[480px] mb-[20px]">
           <p className="text-[#FEF7EE] text-[2rem] font-bold mb-[8px] z-10">
             Our Collection
@@ -61,7 +61,7 @@ const Home = () => {
         </div>
         <img 
           src={ vectorImg.src } 
-          style={{ width: "256px", height: "149px", position: "absolute", top: 10, left: "40%" }} 
+          style={{ width: "256px", height: "149px", position: "absolute", top: "48px", left: "49%" }} 
         />
         <Tab tabs={ tabs } activeTab={ activeTab } setActiveTab={ handleTabClick } />
         {

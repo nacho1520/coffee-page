@@ -3,7 +3,7 @@ import ProductCard from "./ProductCard";
 const ProductList = ({ data }) => {
     console.log(data);
     return(
-        <div className="grid grid-cols-3 gap-8 mt-10">
+        <div className="grid grid-cols-1 gap-8 mt-10 lg:grid-cols-2 xl:grid-cols-3">
             {
                 data.map((coffee) => (
                     <ProductCard 
