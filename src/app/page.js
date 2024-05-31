@@ -2,7 +2,7 @@
 
 import bgImage from "../assets/bg-cafe.jpg";
 import vectorImg from "../assets/vector.svg";
-import ProductCard from "@/components/ProductCard";
+import ProductList from "@/components/ProductList";
 import { useEffect, useState } from "react";
 
 const Home = () => {
@@ -17,16 +17,13 @@ const Home = () => {
     fetchData();
   }, []);
 
-  console.log(products);
-
-
   return (
     <main className="w-full relative p-[160px] flex flex-col items-center">
       <img src={ bgImage.src } 
         style={{ width: "100%", height: "300px", position: "absolute", left: 0, top: 0, zIndex: -10 }} 
       />
-      <div className="bg-list-bg px-[124px] py-[80px] rounded-xl relative">
-        <div className="flex flex-col items-center w-[480px]">
+      <div className="bg-list-bg px-[124px] py-[80px] rounded-xl relative flex flex-col items-center">
+        <div className="flex flex-col items-center w-[480px] mb-[40px]">
           <p className="text-[#FEF7EE] text-[2rem] font-bold mb-[8px] z-10">
             Our Collection
           </p>
@@ -39,13 +36,7 @@ const Home = () => {
           style={{ width: "256px", height: "149px", position: "absolute", top: 10, left: "40%" }} 
         />
         {
-          products && products.map((product, index) => {
-            return(
-              <ProductCard 
-                name={ product.name }
-              />
-            );
-          })
+          products && <ProductList data={ products } />
         }
       </div>
     </main>
