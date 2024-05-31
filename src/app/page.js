@@ -18,6 +18,7 @@ const tabs = [
 ];
 
 const Home = () => {
+  const [ data, setData ] = useState([]);
   const [ products, setProducts ] = useState([]);
   const [ activeTab, setActiveTab ] = useState(tabs[0].id);
 
@@ -25,13 +26,23 @@ const Home = () => {
     const fetchData = async () => {
       const response = await fetch('https://raw.githubusercontent.com/devchallenges-io/web-project-ideas/main/front-end-projects/data/simple-coffee-listing-data.json');
       const data = await response.json();
+      setData(data);
       setProducts(data);
     };
     fetchData();
   }, []);
 
+  const filterProducts = () => {
+    return data.filter((item) => item.available);
+  };
+
   const handleTabClick = (tabId) => {
     setActiveTab(tabId);
+    if(tabId == 1) {
+      setProducts(data);
+    } else {
+      setProducts(filterProducts());
+    }
   };
 
   return (
