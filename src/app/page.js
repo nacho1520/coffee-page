@@ -5,6 +5,7 @@ import vectorImg from "../assets/vector.svg";
 import ProductList from "@/components/ProductList";
 import { useEffect, useState } from "react";
 import Tab from "@/components/Tab";
+import Skeleton from "@/components/Skeleton";
 
 const tabs = [
   {
@@ -21,15 +22,16 @@ const Home = () => {
   const [ data, setData ] = useState([]);
   const [ products, setProducts ] = useState([]);
   const [ activeTab, setActiveTab ] = useState(tabs[0].id);
+  const [ loading, setLoading ] = useState(true);
 
   useEffect(() => {
-    const fetchData = async () => {
-      const response = await fetch('https://raw.githubusercontent.com/devchallenges-io/web-project-ideas/main/front-end-projects/data/simple-coffee-listing-data.json');
-      const data = await response.json();
-      setData(data);
-      setProducts(data);
-    };
-    fetchData();
+    fetch('https://raw.githubusercontent.com/devchallenges-io/web-project-ideas/main/front-end-projects/data/simple-coffee-listing-data.json')
+      .then(response => response.json())
+      .then(data => {
+        setData(data);
+        setProducts(data);
+        setLoading(false);
+      })
   }, []);
 
   const filterProducts = () => {
@@ -67,6 +69,17 @@ const Home = () => {
         {
           products && <ProductList data={ products } />
         }
+        {
+          loading && 
+          <div className="grid grid-cols-1 gap-8 mt-10 lg:grid-cols-2 xl:grid-cols-3">
+            {
+              [1,2,3,4,5,6].map((index) => (
+                <Skeleton key={ index } />
+              ))
+            }
+          </div>
+        }
+        
       </div>
     </main>
   );
